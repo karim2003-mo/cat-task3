@@ -58,3 +58,22 @@ class CubitOtp extends Cubit<OtpBorderColer>{
     emit(GreyOtp());
   }
 }
+class CubitVisiblePass extends Cubit<PassVisibility>{
+  CubitVisiblePass() : super(InVisible());
+  visible(){
+    emit(Visible());
+  }
+  invisible(){
+    emit(InVisible());
+  }
+}
+class CubitConfirmPassVisibility extends Cubit<ConfirmPassVisibility>{
+  CubitConfirmPassVisibility() : super(ConfirmInVisible());
+    visible(){
+    emit(ConfirmVisible());
+  }
+  invisible(){
+    emit(ConfirmInVisible());
+  }
+
+}

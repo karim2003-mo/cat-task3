@@ -53,18 +53,11 @@ class OtpScreenState extends State<OtpScreen> {
                     margin: EdgeInsets.only(top: 20 * _pixel.verticalpixel()),
                     child: OtpTextField(
                       numberOfFields: 4, // Number of OTP digits
-                      enabledBorderColor:(state is RedOtp)? Colors.red:Colors.grey,
+                      enabledBorderColor:(state is RedOtp)? Colors.red:Colors.blue,
                       showFieldAsBox: true,
                       onSubmit: (String code) {
                         otp = code;
-                        if(!checkotp(code)){
-                          context.read<CubitOtp>().red();
-                          context.read<CubitVerifyButtonColor>().grey();
-                        }else{
-                          context.read<CubitOtp>().grey();
-                          context.read<CubitVerifyButtonColor>().blue();
-                        }
-                        
+                        context.read<CubitVerifyButtonColor>().blue();
                       },
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       fieldWidth: 35 * _pixel.horizontalpixel(),
@@ -107,7 +100,7 @@ class OtpScreenState extends State<OtpScreen> {
                             fixedSize: Size(
                                 double.infinity, 25 * _pixel.verticalpixel()),
                             backgroundColor:
-                                (state is VerifyBluecolor &&checkotp(otp))
+                                (state is VerifyBluecolor &&otp.length == 4)
                                     ? Color.fromRGBO(0, 123, 255, 1)
                                     : Color.fromRGBO(204, 204, 204, 1),
                             shape: RoundedRectangleBorder(
@@ -117,12 +110,17 @@ class OtpScreenState extends State<OtpScreen> {
                           onPressed:
                               (state is VerifyBluecolor && otp.length == 4)
                                   ? () async {
-                                      Navigator.of(context).pushNamed(
+                                    if(checkotp(otp)){
+                                      Navigator.of(context).pushReplacementNamed(
                                           "accountscreen",
                                           arguments: _args);
                                     }
+                                    else{
+                                      context.read<CubitOtp>().red();
+                                    }
+                                    }
                                   : () {},
-                          child: Text(_args["screen3"]["buttontext"],
+                          child: Text(_args["screen4"]["buttontext"],
                               style: GoogleFonts.poppins(
                                   fontSize: 12 * _pixel.horizontalpixel(),
                                   color: Color.fromRGBO(255, 255, 255, 1),

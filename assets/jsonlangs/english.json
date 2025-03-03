@@ -32,8 +32,8 @@
     },
     "screen5":{
         "title":"Create Your Account",
-        "subtitle":"Enter the 4 -digit code sent to your phone number.",
-        "namefeild":"Didn’t receive the code?",
+        "subtitle":"Join the community of designers and clients.",
+        "namefeild":"name",
         "pass":"Password",
         "confirmpass":"Confirm password",
         "buttontext":"Create Account",

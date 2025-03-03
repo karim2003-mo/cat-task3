@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task2/cubit/cubitstates.dart';
 import 'package:task2/screens/PhoneScreen.dart';
+import 'package:task2/screens/createaccount.dart';
 import 'package:task2/screens/identityscreen.dart';
 import 'package:task2/screens/language.dart';
 import 'package:task2/screens/verificationotp.dart';
@@ -15,6 +16,8 @@ void main() async{
       BlocProvider(create: (context) => CubitIdentityButtonColor()),
       BlocProvider(create: (context) => CubitVerifyButtonColor()),
       BlocProvider(create: (context) => CubitOtp()),
+      BlocProvider(create: (context) => CubitVisiblePass()),
+      BlocProvider(create: (context) => CubitConfirmPassVisibility()),
     ], child:MainApp()
     ));
 }
@@ -31,6 +34,7 @@ class MainApp extends StatelessWidget {
         "identity": (context) => Identity(),
         "phone":(context) => PhoneScreen(),
         "otpscreen":(context) => OtpScreen(),
+        "accountscreen":(context) => CreateAccountScreen(),
       },
       home: 
       BlocProvider(

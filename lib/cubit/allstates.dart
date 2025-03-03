@@ -27,3 +27,9 @@ class VerifyBluecolor extends VerifyButtonColor{}
 class OtpBorderColer{}
 class RedOtp extends OtpBorderColer{}
 class GreyOtp extends OtpBorderColer{}
+class PassVisibility{}
+class Visible extends PassVisibility{}
+class InVisible extends PassVisibility{}
+class ConfirmPassVisibility{}
+class ConfirmVisible extends ConfirmPassVisibility{}
+class ConfirmInVisible extends ConfirmPassVisibility{}
